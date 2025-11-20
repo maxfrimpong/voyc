@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voices of Youth Coalition Directory - A Network of Youth-Led Organisations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/image/favicon.png" type="image/png">
+    <style>
+        :root {
+            --primary: #01975b;
+            --secondary: #3498db;
+            --accent: #1abc9c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --gray: #95a5a6;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: left;
+        }
+
+        .logo {
+            display: flex;
+            align-items: left;
+            position: center;
+            gap: 1rem;
+            width: 250px;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--accent);
+        }
+
+        .logo h1 {
+            font-size: 1.2rem;
+            font-weight: 100;
+            line-height: 20px;
+            position: center;
+        }
+
+        /* Hero Banner Styles */
+        .hero-container {
+            position: relative;
+            height: 600px;
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+        
+        .hero-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .hero-btn:hover {
+            background: #16a085;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-btn:active {
+            transform: translateY(0);
+        }
+
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto 2rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Fixed Sidebar with Scroll */
+        .sidebar {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            top: 120px;
+            max-height: calc(100vh - 150px);
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem 1.5rem 1rem;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .sidebar-header h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .sidebar-header h2 i {
+            color: var(--accent);
+        }
+
+        .sidebar-content {
+            padding: 1rem 1.5rem;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .filter-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-group h3 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-group h3 i {
+            color: var(--secondary);
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        select, .status-options {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            background-color: var(--white);
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .status-options {
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            border: none;
+            background: none;
+        }
+
+        .status-option {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .status-option.active {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .status-option:first-child {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .status-option:last-child {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .status-option:hover {
+            background-color: #f8f9fa;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background-color: #f8fafc;
+            border-top: 1px solid #eee;
+        }
+
+        button {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .apply-btn {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .apply-btn:hover {
+            background: #2980b9;
+        }
+
+        .reset-btn {
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        .reset-btn:hover {
+            background: #d5dbdb;
+        }
+
+        .content {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .results-header h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .results-count {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .organization-list {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .organization-card {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+        }
+
+        .organization-card:hover {
+            background-color: #f8f9fa;
+        }
+
+        .organization-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .organization-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .organization-status {
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--success);
+        }
+
+        .status-inactive {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--danger);
+        }
+
+        .organization-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .detail-item i {
+            color: var(--secondary);
+            min-width: 20px;
+            margin-top: 0.2rem;
+        }
+
+        .organization-address {
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+            border-left: 3px solid var(--accent);
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .address-icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .organization-description {
+            color: var(--dark);
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .pagination button {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0.25rem;
+            border-radius: 5px;
+            background: var(--light);
+            color: var(--dark);
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .pagination button:hover:not(.active) {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .pagination button.active {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        footer {
+            background: var(--primary);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .map-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 0.25rem;
+            display: inline-block;
+        }
+
+        .map-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+            
+            .organization-details {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-container {
+                height: 400px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .organization-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+            }
+            
+            .organization-address {
+                flex-direction: column;
+            }
+
+            .hero-container {
+                height: 350px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .search-bar {
+                width: 100%;
+            }
+        
+        }
+
+</style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="image/logo.webp" class="logo">
+                <h1></h1>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- Hero Banner with img tag -->
+    <section class="hero-container">
+        <img src="image/heroimage.webp" alt="Community Empowerment">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>VOICES OF YOUTH COALITION DIRECTORY</h1>
+                <p>A network of youth-led organizations driving change in their Communities across the country.</p>
+                <a href="https://yotaweb.org/register-an-organisation/" class="hero-btn" target="_blank">Add Organisation</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-filter"></i> Filter Organisations</h2>
+            </div>
+            
+            <div class="sidebar-content">
+                <div class="filter-group">
+                    <h3><i class="fas fa-search"></i> Search by Name</h3>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="name-search" placeholder="Organization name...">
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3><i class="fas fa-tag"></i> Organisation Type</h3>
+                    <select id="type-filter">
+                        <option value="">All Types</option>
+                        <option value="Hub & Events Space">Hub & Events Space</option>
+                        <option value="Community-Based">Community-Based</option>
+                        <option value="Non-Governmental">Non-Governmental</option>
+                        <option value="Youth Club">Youth Club</option>
+                        <option value="Student Group">Student Group</option>
+                        <option value="Network/Coalition">Network/Coalition</option>
+                        <option value="Social Club">Social Club</option>
+                        <option value="Youth Association">Youth Association</option>
+                        <option value="Religious Group">Religious Group</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <h3><i class="fas fa-industry"></i> Sector</h3>
+                    <select id="sector-filter">
+                        <option value="">All Sectors</option>
+                        <option value="Conflict Prevention">Conflict Prevention</option>
+                        <option value="Civic Participation">Civic Participation</option>
+                        <option value="Decision-making and Governance">Decision-making and Governance</option>
+                        <option value="Development Research">Development Research</option>
+                        <option value="Education">Education</option>
+                        <option value="Employment">Employment</option>
+                        <option value="Entrepreneurship and Sustainable Livelihoods">Entrepreneurship and Sustainable Livelihoods</option>
+                        <option value="Environment and Climate Advocacy">Environment and Climate Advocacy</option>
+                        <option value="Girls and Young Women">Girls and Young Women</option>
+                        <option value="Health Advocacy">Health Advocacy</option>
+                        <option value="Health and Safety">Health and Safety</option>
+                        <option value="Human Rights and Law Enforcement">Human Rights and Law Enforcement</option>
+                        <option value="Mental Health">Mental Health</option>
+                        <option value="Mentally and Physically Challenged Youth">Mentally and Physically Challenged Youth</option>
+                        <option value="Media and Information and Communication Technologies">Media and Information and Communication Technologies</option>
+                        <option value="Poverty Eradication and Socio-economic Integration of Youth">Poverty Eradication and Socio-economic Integration of Youth</option>
+                        <option value="Sustainable Development and Environmental Protection">Sustainable Development and Environmental Protection</option>
+                        <option value="Sexual and Reproductive Health">Sexual and Reproductive Health</option>
+                        <option value="Training and Skills Development">Training and Skills Development</option>
+                        <option value="Youth Development">Youth Development</option>
+                        <option value="Youth Advocacy">Youth Advocacy</option>
+                        <option value="Political Group">Political Group</option>
+                        <option value="Juvenile Delinquency">Juvenile Delinquency</option>
+
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <h3><i class="fas fa-circle"></i> Status</h3>
+                    <div class="status-options">
+                        <div class="status-option active" data-value="">All</div>
+                        <div class="status-option" data-value="true">Active</div>
+                        <div class="status-option" data-value="false">Inactive</div>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3><i class="fas fa-globe-americas"></i> Region</h3>
+                    <select id="region-filter">
+                    <option value="">All Regions</option>
+                    <option value="Ahafo">Ahafo</option>
+                    <option value="Ashanti">Ashanti</option>
+                    <option value="Bono">Bono</option>
+                    <option value="Bono East">Bono East</option>
+                    <option value="Central">Central</option>
+                    <option value="Eastern">Eastern</option>
+                    <option value="Greater Accra">Greater Accra</option>
+                    <option value="Northern">Northern</option>
+                    <option value="North East">North East</option>
+                    <option value="Oti">Oti</option>
+                    <option value="Savannah">Savannah</option>
+                    <option value="Upper East">Upper East</option>
+                    <option value="Upper West">Upper West</option>
+                    <option value="Volta">Volta</option>
+                    <option value="Western">Western</option>
+                    <option value="Western North">Western North</option>
+                </select>
+                </div>
+                
+                <div class="filter-group">
+                <h3><i class="fas fa-city"></i> City/Town</h3>
+                <select id="city-filter">
+                    <option value="">All Cities/Towns</option>
+                    <option value="Bechem">Bechem</option>
+                    <option value="Kumasi">Kumasi</option>
+                    <option value="Sunyani">Sunyani</option>
+                    <option value="Kintampo">Kintampo</option>
+                    <option value="Cape Coast">Cape Coast</option>
+                    <option value="Koforidua">Koforidua</option>
+                    <option value="Accra">Accra</option>
+                    <option value="Tamale">Tamale</option>
+                    <option value="Nalerigu">Nalerigu</option>
+                    <option value="Damongo">Damongo</option>
+                    <option value="Dambai">Dambai</option>
+                    <option value="Bolgatanga">Bolgatanga</option>
+                    <option value="Wa">Wa</option>
+                    <option value="Ho">Ho</option>
+                    <option value="Battor">Battor</option>
+                    <option value="Asamang">Asamang</option>
+                    <option value="Asikuma">Asikuma</option>
+                    <option value="Sekondo-Takoradi">Sekondi-Takoradi</option>
+                    <option value="Sefwi Wiawso">Sefwi Wiawso</option>
+                    <option value="Obuasi">Obuasi</option>
+                    <option value="Lower Manya Krobo">Lower Manya Krobo</option>
+                    <option value="Akyem Ayirebi">Akyem Ayirebi</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <h3><i class="fas fa-flag"></i> Municipal</h3>
+                <select id="municipal-filter">
+                    <option value="">All Municipalities</option>
+                    <option value="Accra Metro">Accra Metro</option>
+                    <option value="Sunyani">Sunyani</option>
+                    <option value="Bolgatanga">Bolgatanga</option>
+                    <option value="Wa">Wa</option>
+                    <option value="Kumbungu">Kumbungu</option>
+                    <option value="East Mamprusi">East Mamprusi</option>
+                    <option value="West Gonja">West Gonja</option>
+                    <option value="Kintampo North">Kintampo North</option>
+                    <option value="Kwahu">Kwahu</option>
+                    <option value="Koforidua">Koforidua</option>
+                    <option value="Adentan">Adentan</option>
+                    <option value="North Tongu District">North Tongu District</option>
+                    <option value="Tamale Central">Tamale Central</option>
+                    <option value="Cape Coast Metro">Cape Coast Metro</option>
+                    <option value="Kwahu">Kwahu</option>
+                    <option value="Atwima Nwabiagya District">Atwima Nwabiagya District</option>
+                    <option value="Kumasi Metro">Kumasi Metro</option>
+                    <option value="Asikuma-Odoben Brakwa District">Asikuma-Odoben Brakwa District</option>
+                    <option value="Sekondi-Takoradi Metro">Sekondi-Takoradi Metro</option>
+                    <option value="Somanya">Somanya</option>
+                    <option value="Akyemansa District">Akyemansa District</option>
+                    <option value="Awutu Senya East">Awutu Senya East</option>
+                </select>
+            </div>
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="apply-btn" id="apply-filters">Apply Filters</button>
+                <button class="reset-btn" id="reset-filters">Reset Filters</button>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div class="results-header">
+                <h2>Featured Organisations</h2>
+                <div class="results-count">Showing <span id="start-count">1</span>-<span id="end-count">10</span> of <span id="total-count">15</span> organizations</div>
+            </div>
+            
+            <ul class="organization-list" id="organization-list">
+                <!-- Organization cards will be inserted here by JavaScript -->
+            </ul>
+            
+            <div class="pagination" id="pagination">
+                <!-- Pagination buttons will be inserted here by JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Voices of Youth Coalition Directory. An initiative of <a href="https://yotaweb.org" target="_blank">YOTA.</a></p>
+            <p>For inquiries, contact: media@yotaweb.org</p>
+        </div>
+    </footer>
+
+    <script>
+        // Compiled Organization data with contact details
+        const organizations = [
+            { id: 1, name: "Skills Hub by YOTA", type: "Hub & Events Space", sector: "Youth Development", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "YOTA Building, 95 La-Bawaleshie Road, East Legon, Accra<br><strong>Contact:</strong> info@skillshub.org.gh | +233 50 149 9316", description: "A creative hub connecting young people with opportunities" },
+            { id: 2, name: "My Home Teacher", type: "Community-Based", sector: "Education", status: true, region: "Central", city: "Cape Coast", municipal: "Cape Coast Metro", address: "KNH Hall, University of Cape Coast, Cape Coast<br><strong>Contact:</strong> myhometeacher1@gmail.com | +233 27 602 1612", description: "My Home Teacher is an award winning social enterprise designed to provide parents with well-qualified tutors who will teach their wards at home." },
+            { id: 3, name: "Community Youth Development Foundation (CYDEF)", type: "Non-Governmental", sector: "Training and Skills Development", status: true, region: "Bono East", city: "Kintampo", address: "Ghana Highways Authority Yard, Oposite Collage of Health, Kintampo<br><strong>Contact:</strong> communityyouth_d@yahoo.com | +233 24 827 0261", description: "CYDEF aims at reducing poverty by empowering young people, women and children to effect strategic changes in the rural communities across the country." },
+            { id: 4, name: "Initiative for Youth Development", type: "Non-Governmental", sector: "Training and Skills Development", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Community Youth Cultural Centre, Kawokudi, Accra<br><strong>Contact:</strong> info@iydghana.org | +233 26 294 4919", description: "The Initiative for Youth Development was established to improve the state of young people in Zongo communities across Ghana." },
+            { id: 5, name: "Reprocan Ghana Medical Consult & Reproductive Health & Cancers Awareness Team", type: "Community-Based", sector: "Health Advocacy", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Teshie Barracks Military academy, Teshie, Accra<br><strong>Contact:</strong> letfightcancers@gmail.com | +233 24 624 7253", description: "Reprocan Ghana is health NGO focused on SDG 3,4,7 and 10" },
+            { id: 6, name: "Impact Ghana", type: "Community-Based", sector: "Education", status: true, region: "Northern", city: "Tamale", municipal: "Tamale Central", address: "Institute of Local Government Studies, Tamale<br><strong>Contact:</strong> impactghana360@gmail.com | +233 24 013 3999", description: "Impact Ghana is a youth led community based organization, which sees to the facilitation, mentoring and advocacy of youths and students in less endowed and deprived communities" },
+            { id: 7, name: "The YouthMaa", type: "Student Group", sector: "Youth Advocacy", status: true, region: "Northern", city: "Tamale", municipal: "Tamale Central", address: "UDS TLC, Tamale<br><strong>Contact:</strong> yakubusharif371@gmail.com | +233 24 893 7330", description: "Seeks to provide a safe space or platform for the Youth to share their views, for the purpose of their development." },
+            { id: 8, name: "Youth Harvest Foundation Ghana (YHFG)", type: "Non-Governmental", sector: "Training and Skills Development", status: true, region: "Upper East", city: "Bolgatanga", municipal: "Bolgatanga", address: "Yikene, Bolgatanga<br><strong>Contact:</strong> board@yhfg.org | +233 38 209 5924", description: "We help the deprived youth of the north of Ghana to conserve and develop their physical and mental strength through education, entrepreneurial training and improved living conditions" },
+            { id: 9, name: "Kwahu Sanitation Volunteers Club", type: "Youth Club", sector: "Health and Safety", status: true, region: "Eastern", city: "Koforidua", municipal: "Kwahu", address: "Youth Center, Kwahu<br><strong>Contact:</strong> kwahusanitationvolunteersclub@gmail.com | +233 24 409 7415", description: "Kwahu Sanitation Volunteers Club is a non- political club that focuses on working towards a clean environment." },
+            { id: 10, name: "Youth Link Ghana", type: "Non-Governmental", sector: "Training and Skills Development", status: true, region: "Upper East", city: "Bolgatanga", municipal: "Bolgatanga", address: "SAJ 52 Nayagnia/Kongwania, Navrongo<br><strong>Contact:</strong> youthlink@yahoo.com | +233 20 308 0280", description: "Our mission is of a more inclusive Ghanaian society, where youth are actively engaged and connected in shaping the current and future development agenda of the country." },
+            { id: 11, name: "Ghana Students Accountability Network", type: "Student Group", sector: "Education", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Knutsford University, Bawaleshie, Accra<br><strong>Contact:</strong> gsanofficial@gmail.com | +233 54 288 2936", description: "A student-led movement within tertiary institution across Ghana championing and intensifying the awareness of the United Nations Agenda 2030 also known as Sustainable Development Goals-SDGs." },
+            { id: 12, name: "Youth Action Movement-Ghana", type: "Youth Association", sector: "Sexual and Reproductive Health", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Nasia Road, Blacksmith Junction, Laterbiokorshie, Accra<br><strong>Contact:</strong> yam@ppag-gh.org | +233 30 231 0454", description: "We advocate for positive change in Sexual and Reproductive Health and Rights among young people in Ghana as well as any other challenge that the Ghanaian youth faces." },
+            { id: 13, name: "Mental Health Hub Ghana", type: "Non-Governmental", sector: "Mental Health", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Wisdom Ways Academy, Haatso, Accra<br><strong>Contact:</strong> mentalhealth.hub101@gmail.com | +233 24 449 4563", description: "This initiative is a joint effort of a group of liked-minded young people who desire to help give mental health education in various communities and help improve mental health situations in communities." },
+            { id: 14, name: "Youth AID Initiative Ghana", type: "Non-Governmental", sector: "Girls and Young Women", status: true, region: "Eastern", city: "Koforidua", municipal: "Koforidua", address: "Near Kwamens Hotel, Suhum, Koforidua<br><strong>Contact:</strong> youthaidinitiative@gmail.com | +233 24 402 7759", description: "Promoting a society of equal rights and opportunities for children and youth." },
+            { id: 15, name: "Abibiman Foundation", type: "Non-Governmental", sector: "Girls and Young Women", status: true, region: "Greater Accra", city: "Accra", municipal: "Adentan", address: "The Parker's Complex, Adenta<br><strong>Contact:</strong> info@abibimanfoundation.org | +233 24 402 3651", description: "We are dedicated to the promotion of sustainable livelihoods, peace and development, focusing on youth and women." },
+            { id: 16, name: "RU - CARE Foundation", type: "Non-Governmental", sector: "Civic Participation", status: true, region: "Ashanti", city: "Kumasi", municipal: "Kumasi Metro", address: "Near Atonsu Station, Kumasi<br><strong>Contact:</strong> gentlebonsu@yahoo.com | +233 54 107 2324", description: "We promote innovative ideas and direct attention on critical issues of social and economic accountability, empowerment, and governance in Ghana" },
+            { id: 17, name: "Young Achievers Caucus (YAC)", type: "Non-Governmental", sector: "Sexual and Reproductive Health", status: true, region: "Western", city: "Sekondi-Takoradi", municipal: "Sekondi-Takoradi Metro", address: "Opposite Ahantaman Senior High School Junction, Takoradi<br><strong>Contact:</strong> myoungachieverscaucus@yahoo.com | +233 24 935 0462", description: "Young Achievers Caucus (YAC) aims to reduce and ultimately end teen pregnancy among young girls in Ghana." },
+            { id: 18, name: "Easy Learn Network Ghana", type: "Network/Coalition", sector: "Education", status: true, region: "Greater Accra", city: "Accra", address: "Based in Accra<br><strong>Contact:</strong> sproutlogics@gmail.com | +233 24 899 8359", description: "We provide and create equal access to education in all part of Ghana" },
+            { id: 19, name: "World Inspiring Network", type: "Non-Governmental", sector: "Poverty Eradication and Socio-economic Integration of Youth", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Near Pentecost University College, Sowutuom, Accra<br><strong>Contact:</strong> info@worldinspiringnetwork.org | +233 54 139 2208", description: "We support needy people in Ghana by providing them with quality education and health care." },
+            { id: 20, name: "International Model Diplomats for Integrated Development", type: "Non-Governmental", sector: "Training and Skills Development", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "NHIS Street, Abeka Post Office, Abeka Lapaz, Accra<br><strong>Contact:</strong> imdidteam@gmail.com | +233 30 291 5715", description: "IMDID maintains and administers youth mentorship and development programs." },
+            { id: 21, name: "Starlet Girls Club", type: "Youth Club", sector: "Girls and Young Women", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Based in Accra<br><strong>Contact:</strong> starletgirlsclub@gmail.com | +233 24 444 1884", description: "The most solicited for girls club in Ghana which provides girls with information, advice, support and counselling concerning various issues which influence their future." },
+            { id: 22, name: "Empowered Youth Foundation", type: "Non-Governmental", sector: "Training and Skills Development", status: true, region: "Central", city: "Cape Coast", municipal: "Cape Coast Metro", address: "Based in Cape Coast<br><strong>Contact:</strong> empoweredyouthfoundation@gmail.com | +233 24 997 5953", description: "The Empowered Youth Foundation envisions a world where the youth are equipped with the requisite experiences, attitudes and skills to achieve their full potential, become ethical leaders and responsible citizens" },
+            { id: 23, name: "Leadershift Institute", type: "Non-Governmental", sector: "Civic Participation", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Adomi Street, Mallam Atta, behind Pentecost Church, Accra<br><strong>Contact:</strong> info@leadershiftinstitute.net | +233 38 24 782 4483", description: "An International Social Enterprise that seeks to raise exceptional Leaders through relevant projects and programs, campaigns, trainings and workshops in leadership, entrepreneurship and skills development." },
+            { id: 24, name: "Research and Grant Institute of Ghana (REGIG)", type: "Non-Governmental", sector: "Development Research", status: true, region: "Greater Accra", city: "Accra", municipal: "Adenta", address: "Agbawe avenue 52 street, Adenta<br><strong>Contact:</strong> obedasamoah@regig.org | +233 54 342 7870", description: "REGIG is repositioning the universities and research institutions to play active and instrumental roles in shaping the developmental agenda of Ghana through their influences on the direction and insight produced from quality empirical research." },
+            { id: 25, name: "Zaabuni Farmers Training Center", type: "Community-Based", sector: "Training and Skills Development", status: true, region: "Northern", city: "Tamale", municipal: "Tamale Central", address: "Before Wale Wale Firestation, Wale Wale<br><strong>Contact:</strong> aissaka10@gmail.com | +233 20 946 4241", description: "We train farmers on new and advance farming techniques to use limited farm inputs judiciously to maximize profit." },
+            { id: 26, name: "Dry Tears Foundation", type: "Non-Governmental", sector: "Poverty Eradication and Socio-economic Integration of Youth", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Maxwell House, Nii Tetteh Amui Street, Hse. No. ANT/Z3/A044A<br><strong>Contact:</strong> drytearsfoundation@gmail.com | +233 24 307 1055", description: "Our core mandate is to improve the quality of life of the poor and needy children in society, orphans and street children especially in the rural areas of all human race, through education and other integrated development programs." },
+            { id: 27, name: "Young Executives' Business Breakfast Meeting", type: "Youth Club", sector: "Decision-making and Governance", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "63 North Boundary Road, Community 20, Lashibi, Accra<br><strong>Contact:</strong> info@ieyamson.com | +233 24 654 2642", description: "A quarterly event designed to bring the country's current and future business executives together to have a dialogue on real time business issues, challenges and opportunities." },
+            { id: 28, name: "Kwahuman Student Union", type: "Student Group", sector: "Civic Participation", status: true, region: "Eastern", city: "Koforidua", municipal: "Kwahu", address: "Kwahu Community<br><strong>Contact:</strong> kwahumansu@gmail.com | +233 55 450 1300", description: "Student movement promoting co-operation and friendship among students from Kwahu." },
+            { id: 29, name: "Light for Children", type: "Non-Governmental", sector: "Health and Safety", status: true, region: "Ashanti", city: "Kumasi", municipal: "Kumasi Metro", address: "OGYAM, Adum, Kumasi<br><strong>Contact:</strong> mike@lightforchildren.com | +233 20 230 6985", description: "Leading vulnerable persons and communities to overcome development challenges in a world of hope and tolerance." },
+            { id: 30, name: "Ghana Journalists Association for Development", type: "Network/Coalition", sector: "Media and Information and Communication Technologies", status: true, region: "Ashanti", city: "Kumasi", municipal: "Kumasi Metro", address: "Based in Kumasi<br><strong>Contact:</strong> officialghajad@gmail.com | +233 24 369 4269", description: "We facilitate the gathering,writing and disseminating of information with regards to Social Development\nTo educate and encourage the various societies on the need for Media availability." },
+            { id: 31, name: "Battor Concerned Citizens Development Association", type: "Community-Based", sector: "Civic Participation", status: true, region: "Volta", city: "Battor", municipal: "North Tongu District", address: "Kpele, Battor<br><strong>Contact:</strong> asilevicollins@gmail.com | +233 24 145 8769", description: "Concerned with fast-tract development of Battor" },
+            { id: 32, name: "Western Youth Network for Development", type: "Non-Governmental", sector: "Training and Skills Development", status: true, region: "Western", city: "Sekondi-Takoradi", municipal: "Sekondi-Takoradi Metro", address: "Bank of Ghana, Takoradi<br><strong>Contact:</strong> ken.herbert@ymail.com | +233 24 588 3185", description: " We create a positive change in our community by developing strong partnerships between major community stakeholders, youth related organisations and community development agencies to help create opportunities for youths to serve the community." },
+            { id: 33, name: "Paradise Health Mission International", type: "Non-Governmental", sector: "Health Advocacy", status: true, region: "Ashanti", city: "Asamang",  municipal: "Atwima Nwabiagya District", address: "Asamang Community Center<br><strong>Contact:</strong> paradisehealthmission@gmail.com | +233 55 859 7181", description: "We strive to reach individuals, groups And Organizations in Less privileged communities with comprehensive health programs." },
+            { id: 34, name: "Inspire Before You Expire Global Foundation", type: "Non-Governmental", sector: "Civic Participation", status: true, region: "Central", city: "Asikuma", municipal: "Asikuma-Odoben Brakwa District", address: "PAMO International School, Asikuma, Central Region<br><strong>Contact:</strong> ibyeinitiative@gmail.com | +233 24 924 3138", description: "We advocate on social issues the society is silent on but massively affecting us and lastly, to help in the journey of eradicating unemployment and general poverty" },
+            { id: 35, name: "Intellectual Icon Group", type: "Non-Governmental", sector: "Training and Skills Development", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Temple Street, Ablekuma Fanmilk Junction, Accra<br><strong>Contact:</strong> iconic.info.gh@gmail.com | +233 30 290 7516", description: "We are aimed at unblocking the economic potential of the Ghanaian youth, through requisite entrepreneurial and vocational skills training." },
+            { id: 36, name: "Boa Africa", type: "Non-Governmental", sector: "Education", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Mobile<br><strong>Contact:</strong> hi@boaafrica.org | No phone number", description: "Boa Africa is a mobile-based digital platform supporting teachers and their students" },
+            { id: 37, name: "Youth Development Advocates Foundation", type: "Student Group", sector: "Youth Advocacy", status: true, region: "Northern", city: "Tamale", municipal: "Tamale Central", address: "UDS TLC, Tamale<br><strong>Contact:</strong> yakubusharif371@gmail.com | +233 24 893 7330", description: "Seeks to provide a safe space or platform for the Youth to share their views, for the purpose of their development." },
+            { id: 38, name: "The concerned African youth movement", type: "Community-Based", sector: "Conflict Prevention", status: true, region: "Ashanti", city: "Kumasi", municipal: "Kumasi Metro", address: "Adum PZ, Kumasi<br><strong>Contact:</strong> Concernafricanyouthmovement@gmail.com | +233 55 434 8875", description: "The C.A.Y.M is a youth empowerment movement that seeks to empower AFRICAN youth to maximize the efficiency of African patriotism and ensure the security and privacy of these young youth are protected." },
+            { id: 39, name: "African Youth and Adolescents Network on Population and Development, Ghana Chapter", type: "Network/Coalition", sector: "Health Advocacy", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Accra, Greater Accra<br><strong>Contact:</strong>  afriyanghana99@gmail.com | +233 55 8704 164", description: "AfriYAN Ghana is a network composed of active youth-led and youth-focused organisations which are registered under the laws of Ghana, working on priority population and development issues." },
+            { id: 40, name: "Youth Budget Advocacy Group of Upper Manya", type: "Community-Based", sector: "Decision-making and Governance", status: true, region: "Eastern", city: "Koforidua", municipal: "Upper Manya Krobo", address: "Manya Krobo, Krobo, Eastern<br><strong>Contact:</strong> mteyemamle@gmail.com | +233 26 6017 380", description: "We are a group of young people who monitor our district(Upper Manya Krobo district) assembly's projects meant for young people through budget analysis and community surveys." },
+            { id: 41, name: "Future Of Africa", type: "Non-Governmental", sector: "Civil Participation", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "FD301 Numo Tetteh Lp, Ability, Accra<br><strong>Contact:</strong> hello@futureofafrica.org | +233 24 773 3392", description: "We take a long-term approach to supporting the growth and development of young people living in the streets and rural villages." },
+            { id: 42, name: "Anchor for International Coperation", type: "Non-Governmental", sector: "Education", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Accra<br><strong>Contact:</strong> info@aficghana.org | +233 245 355 781", description: "Anchor for International Cooperation (AFIC GHANA) is a non - profit - making organization incorporated in June, 2013 with the goal to provide local and international opportunities for young people across the Globe in the field of Education, Social Justice, Tourism and activism to promote Regional Integration." },
+            { id: 43, name: "African Youth Leadership Consult", type: "Non-Governmental", sector: "Civic Participation", status: true, region: "Ashanti", city: "Kumasi", municipal: "Kumasi Metro", address: "Kumasi Central<br><strong>Contact:</strong> aylcafrica@hotmail.com | +233 50 686 4843", description: "AYLC helps ensure youth participation in decision making process so as to promote youth governance in Africa." },
+            { id: 44, name: "Dakeauth GP Farms", type: "Community-Based", sector: "Entrepreneurship and Sustainable Livelihoods", status: true, region: "Ashanti", city: "Kumasi", municipal: "Kumasi Metro", address: "Unknown Street, Kumasi<br><strong>Contact:</strong> dakeauth@outlook.com | +233 24 563 5897", description: "Involves in agribusiness and agricultural development. Entrepreneurial trainings and development, environmental community sustainability. Socioeconomic integration of youth to reduce poverty." },
+            { id: 45, name: "Youth Alliance for Development", type: "Non-Governmental", sector: "Civic Participation", status: true, region: "Ashanti", city: "Kumasi", municipal: "Kumasi Metro", address: "Africana Lodge, Dove House off Government Hospital Road, Kumasi<br><strong>Contact:</strong> yad.gh@yahoo.com | +233 246 486 740", description: "The foundation seeks to engage young people in good governance and inculcate in them the principle of ethical and responsible leadership." },
+            { id: 46, name: "Network of Empowered Youth for Development", type: "Youth Association", sector: "Education", status: true, region: "Ashanti", city: "Kumasi", municipal: "Kumasi Metro", address: "Office of Assemblyman of Asokore Mampong, Boakye Dankwa Street, opposite the old Palace, Asokore Mampong, Kumasi<br><strong>Contact:</strong> neyodghana@gmail.com | +233 24 669 7644", description: "We promote innovative ideas and direct attention on critical issues of social and economic accountability, empowerment, and governance in Ghana" },
+            { id: 47, name: "Royalties", type: "Student Group", sector: "Education", status: true, region: "Ashanti", city: "Kumasi", municipal: "Kumasi Metro", address: "Unknown Street, Kumasi<br><strong>Contact:</strong> cephaquor@gmail.com | N/A", description: "A student youth group that tutor weak students to get a full grasp of lessons taught during lectures so that they are not left behind." },
+            { id: 48, name: "National Association of Nzema Students-KNUST", type: "Student Group", sector: "Education", status: true, region: "Ashanti", city: "Kumasi", municipal: "Kumasi Metro", address: "KNUST Campus, Kumasi<br><strong>Contact:</strong> nansknustnzema@gmail.com | +233 54 176 8984", description: "National Association of Nzema students - KNUST is a Ghanaian based association which seeks to contribute towards the welfare,development and progress of all Nzema students in Ghana." },
+            { id: 49, name: "The Tertiary Education Charter of the Convention Peoples Party, KNUST", type: "Political Group", sector: "Civic Participation", status: true, region: "Ashanti", city: "Kumasi", municipal: "Kumasi Metro", address: "KNUST Campus, Kumasi<br><strong>Contact:</strong> knustteschart@gmail.com | N/A", description: "The Charter, just like the mother party, is committed to the pursuit of the teachings, ideas, philosophy and vision of Osagyefo Dr. Kwame Nkrumah and to build a strong, disciplined and dynamic political party for national reconstruction and development, the pursuit of egalitarianism and eradication of poverty, elitism, inequality, corruption and other social injustices from the Ghanaian society." },
+            { id: 50, name: "Vision Aid Foundation", type: "Community-Based", sector: "Youth Development", status: true, region: "Ashanti", city: "Obuasi", municipal: "Obuasi", address: "Gausu Extension, Block 87/A, Government Street, Obuasi<br><strong>Contact:</strong> visionaidfoundationgh@gmail.com | +233 57 367 4305 / 50 138 0578", description: "Vision Aid Foundation is a Non- Profit Organisation which focuses on discovering and bringing solutions which are innovative in deprived communities within Ghana and beyond by reaching the unreached with their basic societal needs ranging from Education to Health, Infrastructure or Agriculture." },
+            { id: 51, name: "Youth Without Borders Ghana", type: "Youth Association", sector: "Youth Development", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "PT 5 Okpoi Gonno, Baatsona, Spintex Road<br><strong>Contact:</strong> info@ywbghana.org | +233 55 311 1252", description: "Our commitment is to build concrete structures and solutions to address the developmental challenges facing young people and society at large." },
+            { id: 52, name: "Friends of the Children", type: "Non-Governmental", sector: "Education", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Unknown Street, Achimota<br><strong>Contact:</strong> fotcgh@yahoo.com | +233 24 222 5739", description: "A group of youth people who advocates for a quality education for rural children being of them." },
+            { id: 53, name: "Proud Donors Network", type: "Non-Governmental", sector: "Education", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Adomi Street, Mallam Atta, behind Pentecost Church, Accra<br><strong>Contact:</strong> charles.mawuli.dotse@gmail.com | +233 27 603 1215", description: "A registered public Christian NGO governed by the laws of Ghana to aid in reducing illiteracy and promoting quality education for future development." },
+            { id: 54, name: "Be-Great Promotions", type: "Community-Based", sector: "Youth Development", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Adjacent to Busia Residence, South Odorkor, Accra<br><strong>Contact:</strong> bgrtprt@gmail.com | +233 54 266 3764", description: "We strive to organise the youth in the various communities across the country and instill the interest in playing the Ghana's indigenous games/sports." },
+            { id: 55, name: "PeaceAids International", type: "Non-Governmental", sector: "Conflict Prevention", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Wotse-Kojo street. Korle bu, Accra<br><strong>Contact:</strong> peaceaidint@gmail.com | +233 54 691 5459", description: "We are aimed at the overall mission of speeding up regional integration,peace initiative, communuty development and advocacy in order to enable member states and the rest of the world to play its rightful role in the global peace building and promotion, while at the same time addressing a myriad of peace issues, causes of violence, war and fostering peace education." },
+            { id: 56, name: "Nobles Club", type: "Social Club", sector: "Youth Development", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Unknown Street, Accra<br><strong>Contact:</strong> hq.noblesclub@gmail.com | N/A", description: "Nobles Club as a service and social club was created to make individuals be more responsible,sociable,creative,morally upright and useful to both themselves and their society." },
+            { id: 57, name: "New African Chapter", type: "Network/Coalition", sector: "Civic Participation", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Unknown Street, Accra<br><strong>Contact:</strong> info@newafricanchapter.org | +233 26 856 3792", description: "New African Chapter (NAC) is a non-profit organization that comprises of members from all the 54 African states, committed to leading the development of the new Africa." },
+            { id: 58, name: "West Africa Centre for Counter-Extremism", type: "Non-Governmental", sector: "Conflict Prevention", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "No. 45 Odum St, High Tension Lane, North Dzorwulu, Accra<br><strong>Contact:</strong> mmmutaru@gmail.com | +233 50 583 7185", description: "We are focused on Countering Violent Extremism (CVE) and radicalization through research and outreach in West Africa." },
+            { id: 59, name: "Youth Wise up Against Stroke", type: "Non-Governmental", sector: "Health and Safety", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Unknown Street, Accra<br><strong>Contact:</strong> youthupagainststroke@yahoo.com | N/A", description: "Advocate to provide information and education on stroke/ncd to the youth in ghana to enable them prevent all forms of ncds in their lives." },
+            { id: 60, name: "LAIDS Foundation, Ghana", type: "Network/Coalition", sector: "Youth Development", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Based in Accra<br><strong>Contact:</strong> laidsfoundation@gmail.com | +233 55 387 1727", description: "LAIDS Foundation is an organization formed on the principles of equity, good leadership, integrity and commitment to execute projects that will bring transformation to the African continent." }, 
+            { id: 61, name: "Young African Leaders Network Ghana", type: "Network/Coalition", sector: "Civic Participation", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Unknown Street, Accra<br><strong>Contact:</strong> yalnghana@gmail.com | +233 24 524 7296", description: "A network of young professionals that seek to promote the development of entrepreneurial skills, civic advocacy and public leadership in Ghana." },
+            { id: 62, name: "Innovation for Empowerment Development", type: "Non-Governmental", sector: "Youth Development", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Logos Business School, Next to Manet Police Station, Spintex, Accra<br><strong>Contact:</strong> emartey96@gmail.com | +233 54 306 2139", description: "Innovation for Empowerment and Development (IFED) is an educational and advocacy organization that provides globally accepted platforms to empower people, especially the youth, and use programmes and projects to help translate the power gained into development." }, 
+            { id: 63, name: "Youth Alliance for Development", type: "Non-Governmental", sector: "Civic Participation", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Africana Lodge, Dove House, Off Government Hospital Road, Obuasi<br><strong>Contact:</strong> tantirobert@yahoo.co.uk | +233 24 648 6740", description: "The foundation seeks to engage young people in good governance and inculcate in them the principle of ethical and responsible leadership." },
+            { id: 64, name: "KARIBS Foundation", type: "Non-Governmental", sector: "Youth Development", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "22nd Street, New Achimota HSE # M76 Disco Villa, Chantan - Accra<br><strong>Contact:</strong> karibsfoundation@yahoo.com | +233 50 946 4473", description: "The KARIBS Foundation is a Pan-African development and research institute based in Accra Ghana, West Africa. We work on 5 thematic areas which includes Public Policy Analysis - Field Research - Social Enterprise - Rural Expeditions & Cultural Immersions." },
+            { id: 65, name: "Contemporary Muslim Foundation", type: "Non-Governmental", sector: "Health and Safety", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Unknown Street, Accra<br><strong>Contact:</strong> contemporarymuslimfoundation@gmail.com | +233 26 144 3201", description: "Our focus is to help discuss central issues facing young Muslims ans to engage with Islamic scholars, educationalist, social commentators, interested institutions and organizations with the aim of empowering Muslim Youth, through the provision of religious, social services and facilities for Muslim Community." },
+            { id: 66, name: "CYIB-Curious Minds", type: "Non-Governmental", sector: "Civic Participation", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "No. 27 Akpakpa Road, Kokomlemle, Accra<br><strong>Contact:</strong> info@cmghana.org | +233 30 222 5309", description: "Curious Minds works to ensure that all children and youth are well informed and meaningfully participate in decision-making that affects their lives, by advocating, generating knowledge, sharing information, building partnerships and training young activists with a focus on the local, national and international levels." },
+            { id: 67, name: "Africa Entrepreneurs Community", type: "Network/Coalition", sector: "Entrepreneurship and Sustainable Livelihoods", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Unknown Street, Accra<br><strong>Contact:</strong> info@aecafrica.com | +233 27 180 9050", description: "Our wide corporate network is a platform for the promotion of partnerships between the holders of capital and the African entrepreneur as we encourage the participation of Africans in this new frontier of opportunities." },
+            { id: 68, name: "African Youth for Change", type: "Network/Coalition", sector: "Civic Participation", status: true, region: "Bono", city: "Sunyani", municipal: "Sunyani", address: "St.James Seminary/Senior High School, Sunanyi<br><strong>Contact:</strong> obedantwibaidoo@gmail.com | +233 54 999 8338", description: "Our vision is to see a better Africa void of all forms of vices including corruption for the merit of generations to come and our mission is to realise our vision through the youth." },
+            { id: 69, name: "Global Alliance For Youth Leaders", type: "Non-Governmental", sector: "Youth Development", status: true, region: "Western", city: "Takoradi", municipal: "Sekondi-Takoradi Metro", address: "7k, Spio Avenue, Queen of Peace Inside Anaji, Takoradi<br><strong>Contact:</strong> gayl.ghana@gmail.com | +233 20 739 9057", description: "Our vision lies on the positive interventions that would help youths in all countries mainly the majority of marginalized and powerless groups that are victims of challenges facing the youths." },
+            { id: 70, name: "Invaders Society", type: "Community-Based", sector: "Civic Participation", status: true, region: "Central", city: "Cape Coast", municipal: "Cape Coast", address: "RD 36/14, Cape Coast<br><strong>Contact:</strong> info.invaders2012@gmail.com | +233 54 174 6010", description: "We lead positive social change and deliver value to members through information, advocacy and service." },
+            { id: 71, name: "Full Hearts Foundation", type: "Community-Based", sector: "Health and Safety", status: true, region: "Central", city: "Assin Fosu", municipal: "Assin Fosu", address: "AH/14 Assin Nyankomasi<br><strong>Contact:</strong> fullheartsfoundation18@gmail.com | +233 24 637 2604", description: "We provide services that serves as a source of inspirational model of living and to work together to create social changes in communities and in individuals in the rural areas." },
+            { id: 72, name: "Young Achievers Caucus", type: "Non-Governmental", sector: "Health Advocacy", status: true, region: "Western", city: "Sekondi", municipal: "Sekondi-Takoradi Metro", address: "Based in Sekondi<br><strong>Contact:</strong> youngachieverscaucus@yahoo.com | +233 54 386 8637", description: "YAC began as a small group of intrinsically motivated and spirited young men and women who wanted to improve ghanaian communities and society through educating fellow youths especially girls and young women on Sexual and Reproduction Health and Rights." },
+            { id: 73, name: "Gibicts Center for Community and Youth Development", type: "Community-Based", sector: "Youth Development", status: true, region: "Eastern", city: "Koforidua", municipal: "Koforidua", address: "Based in Koforidua<br><strong>Contact:</strong> info@gibictsyouthcenter.org | +233 20 883 3597", description: "Our mission is to develop and build the capacity of the underprivileged youth through apprenticeship programs in the field of ICT, Agribusiness, and Vocational/Technical to promote self-employment and other forms of employment." },
+            { id: 74, name: "Stalwart Plus Homes Foundation", type: "Non-Governmental", sector: "Youth Development", status: true, region: "Eastern", city: "Somanya", municipal: "Lower Manya Krobo ", address: "Okwenya, Akuse junction, Somanya<br><strong>Contact:</strong> pkobby@yahoo.com | +233 24 351 0883", description: "Changing lives through farming and vocation skillfully to provide food security and eliminate criminals in communities." },
+            { id: 75, name: "HC: Healthy Choices", type: "Community-Based", sector: "Health Advocacy", status: true, region: "Eastern", city: "Somanya", municipal: "Lower Manya Krobo", address: "Based in Somanya<br><strong>Contact:</strong> hcsrhr@gmail.com | +233 20 959 6600", description: "HC: Healthy Choices is a youth-led project that uses participatory methods to advocate on social issues that affect communities such as HIV and AIDS, Sexual Reproductive Health (teenage pregnancy, safe and unsafe abortion etc), Human Rights and Environmental issues by creating platform for young people to engage opinion leaders." },
+            { id: 76, name: "All Christian Youth Ghana", type: "Religious Group", sector: "Youth Development", status: true, region: "Eastern", city: "Somanya", municipal: "Lower Manya Krobo", address: "Adjikpo, Somanya<br><strong>Contact:</strong> acyghana@gmail.com | N/A", description: "A Christian youth led coalition and or association of Christian and Ecumenical youth groups, from various churches, who have come together with the aim of developing youth potentials and enhancing them with the requisite disciplines to meet global standards of youth as enshrined in the world plan of action for youth, the African Youth Charter and other global frameworks for youth development." }, 
+            { id: 77, name: "Young Leaders For Change Foundation", type: "Non-Governmental", sector: "Civic Participation", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Unknown Street, Accra<br><strong>Contact:</strong> youngleadersforchangefdn@gmail.com | +233 24 676 0776", description: "Young Leaders for Change Foundation works to ensure that all children, youth and women are well informed and meaningfully participate in decision-making that affects their lives by advocating, generating knowledge, sharing information, building partnerships and training young activists at local, national and international levels." },
+            { id: 78, name: "Ayirebi Youth Association", type: "Youth Association", sector: "Youth Development", status: true, region: "Eastern", city: "Akyem Ayirebi", municipal: "Akyemansa District ", address: "Akyem Ayirebi Community Center on Oda Rd, Eastern Region<br><strong>Contact:</strong> aayirebiyouth@gmail.com | +233 24 489 6527", description: "The KARIBS Foundation is a Pan-African development and research institute based in Accra Ghana, West Africa. We work on 5 thematic areas which includes Public Policy Analysis - Field Research - Social Enterprise - Rural Expeditions & Cultural Immersions." },
+            { id: 79, name: "Social Farm", type: "Community-Based", sector: "Entrepreneurship and Sustainable Livelihoods", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Opposite Goil Head Office, No. E/100/2 Adjacent City Paints, Tudu-Adabraka, Accra<br><strong>Contact:</strong> info@socialfarmghana.com | +233 24 404 6334", description: "Social Farm is a for-profit enterprise engaged in the promotion of social enterprises and small enterprises to create jobs and effect sustainable changes in rural communities in a bid to achieve the sustainable development goals." },
+            { id: 80, name: "Act for Change", type: "Non-Governmental", sector: "Education", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "J.E.A. Mills High street, Ga Mashie Development Agency (GAMADA), Accra.<br><strong>Contact:</strong> act4changegh@gmail.com | +233 54 885 0681", description: "Act for Change is a youth-led NGO from Ga-Mashie (James Town), Accra, Ghana which uses forum,and popular theatre and other partipatory methods to advocate on social issues that affect communities." },
+            { id: 81, name: "Futurepreneurs Africa", type: "Network/Coalition", sector: "Training and Skills Development", status: true, region: "Central", city: "Kasoa", municipal: "Awutu Senya East", address: "Unknown Street, Kasoa<br><strong>Contact:</strong> lifeshapersnetwork@gmail.com | +233 27 151 2732", description: "Futurepreneurs Africa is a youth-led NGO focused on building an emerging society of business and social entrepreneurs poised to make a sustainable social-economic impact in areas of wealth creation and jobs for themselves and others." },
+            { id: 82, name: "Galaxy Fun Club - Tema", type: "Youth Club", sector: "Civic Participation", status: true, region: "Greater Accra", city: "Tema", municipal: "Tema Metro", address: "Tema Communicty 1 Center, Tema<br><strong>Contact:</strong> adabogothomas@yahoo.com | +233 24 968 4238", description: "We are a youth based voluntary, charity and advocacy youth club in Tema with youth empowerment and youth development as our key objectives." },
+            { id: 83, name: "LeadAfrique International", type: "Non-Governmental", sector: "Youth Development", status: true, region: "Greater Accra", city: "Accra", municipal: "Adentan", address: "#432 Lame Dwaahe Styreet, SHC Estates, Adenta Housing Down, Adenta, Accra<br><strong>Contact:</strong> ask@leadafrique.org | +233 30 254 0387", description: "We are passionate about cultivating responsive leaders from the ground up. Our focus is on enabling young people to build their greatness through our Leadership Farm concept." },
+            { id: 84, name: "Tema New Town Youth", type: "Community-Based", sector: "Religious and Cultural Activities", status: true, region: "Greater Accra", city: "Tema", municipal: "Tema Metro", address: "New Town, Tema<br><strong>Contact:</strong> boakye_p@yahoo.com | +233 24 852 6405", description: "We educate the youth through sports." },
+            { id: 85, name: "Oheneba Foundation", type: "Student Group", sector: "Health Advocacy", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Unknown Street, Accra<br><strong>Contact:</strong> collinsmarfo500@gmail.com | +233 24 899 8359", description: "We educate teenagers about sex and also how to handle themselves in their teenage period." },
+            { id: 86, name: "Enterprise Development Hub", type: "Non-Governmental", sector: "Entrepreneurship and Sustainable Livelihoods", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "No. F7/14, Ashongman Estate, Accra<br><strong>Contact:</strong> edshubghana@gmail.com | +233 24 351 2492", description: "As a Social Enterprise, our goal is to support as many Businesses as we can, at all levels to expand the boundaries of economic development, wealth creation and employment generation for the joy of individuals and communities." },
+            { id: 87, name: "Wisdom Ways Academy International", type: "Non-Governmental", sector: "Education", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "110 Wisdom Ways, Narhman Road, Accra<br><strong>Contact:</strong> wisdomwaysacademy@gmail.com | +233 30 397 5288", description: "Wisdom Ways Academy is a non governmental organisation,focusing on supporting early childhood education and basic education for children in low income communities." },
+            { id: 88, name: "Spark 360 Foundation", type: "Youth Club", sector: "Training and Skills Development", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "UPSA Campus, Accra<br><strong>Contact:</strong> wisdom.generic7consult@gmail.com | +233 20 107 3105", description: "The Center functions with an objective of training, branding, and empowering tertiary students with or without capacities in entrepreneurial developments, technological ideas and innovative creations by focusing on the various investment opportunities available to them, thereby resulting in job creation, poverty alleviation and economic growth." },
+            { id: 89, name: "Creative Art Awards International", type: "Youth Development", sector: "Religious and Cultural Activities", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Unknown Street, Madina, Accra<br><strong>Contact:</strong> abubarkarsafienu@outlook.com | +233 54 201 1197", description: "We help talented youth in the various secondary and tertiary institutions who are in need for their dreams to come true." },
+            { id: 90, name: "Primelife Ghana", type: "Non-Governmental", sector: "Health and Safety", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Unknown Street, Accra<br><strong>Contact:</strong> eourprimelife@gmail.com | +233 24 488 8389", description: "A non-governmental organisation interested in the welfare of children, their education and health." }, 
+            { id: 91, name: "SpreadAid International", type: "Youth Association", sector: "Juvenile Delinquency", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "University of Ghana Campus, Legon, Accra<br><strong>Contact:</strong> spreadaidshope@gmail.com | +233 54 819 8980", description: "Spread Aid International is a student based NGO that has its main focus on kids and seeks to 'Put smiles back on the faces'." },
+            { id: 92, name: "UNFPA Youth Advisory Panel", type: "Non-Governmental", sector: "Youth Development", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Opposite UNICEF Ghana Office, Ring Road, Accra<br><strong>Contact:</strong> emartey96@gmail.com | +233 24 462 1830", description: "The Youth Advisory Panel comprises young people selected from the UNFPA Operational Areas in Ghana tasked to advice the Fund on its youth Programmes." },
+            { id: 93, name: "Peer Foundation", type: "Youth Association", sector: "Health and Safety", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Unknown Street, Accra<br><strong>Contact:</strong> peerfoundation@gmail.com | +233 20 890 8428", description: "A social group of dedicated and passionate youth which seeks to create awareness on sickle cell disease to support patients of the disease by providing counseling." },
+            { id: 94, name: "Enactus Ghana", type: "Non-Governmental", sector: "Entrepreneurship and Sustainable Livelihoods", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Directory Opposite GIMPA, Legon, Accra<br><strong>Contact:</strong> pmghana@enactus.org | +233 30 240 7704", description: "Enactus is an international nonprofit organization dedicated to inspiring students to improve the world through entrepreneurial action." },
+            { id: 95, name: "Youth Icons Ghana", type: "Non-Governmental", sector: "Sustainable Development and Protection of the Environment", status: true, region: "Greater Accra", city: "Accra", municipal: "Accra Metro", address: "Unknown Street, Accra<br><strong>Contact:</strong> info@youthiconsgh.org | +233 27 725 8686", description: "A vibrant Youth - oriented nonprofit organization committed to the Empowerment of the youth of Ghana and Africa." },
+
+        ];
+
+        // DOM elements
+        const organizationList = document.getElementById('organization-list');
+        const paginationContainer = document.getElementById('pagination');
+        const resultsCount = document.getElementById('total-count');
+        const startCount = document.getElementById('start-count');
+        const endCount = document.getElementById('end-count');
+
+        // Filter elements
+        const nameSearch = document.getElementById('name-search');
+        const typeFilter = document.getElementById('type-filter');
+        const sectorFilter = document.getElementById('sector-filter');
+        const regionFilter = document.getElementById('region-filter');
+        const cityFilter = document.getElementById('city-filter');
+        const municipalFilter = document.getElementById('municipal-filter');
+        const applyFiltersBtn = document.getElementById('apply-filters');
+        const resetFiltersBtn = document.getElementById('reset-filters');
+        const statusOptions = document.querySelectorAll('.status-option');
+        const globalSearch = document.getElementById('global-search');
+
+        // State variables
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let filteredOrganizations = [...organizations];
+
+        // Initialize the application
+        function init() {
+            renderOrganizations();
+            setupEventListeners();
+            updateResultsCount();
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            applyFiltersBtn.addEventListener('click', applyFilters);
+            resetFiltersBtn.addEventListener('click', resetFilters);
+            
+            statusOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    statusOptions.forEach(opt => opt.classList.remove('active'));
+                    option.classList.add('active');
+                });
+            });
+            
+            // Global search functionality
+            globalSearch.addEventListener('input', () => {
+                nameSearch.value = globalSearch.value;
+                applyFilters();
+            });
+        }
+
+        // Apply filters based on form values
+        function applyFilters() {
+            const nameQuery = nameSearch.value.toLowerCase();
+            const typeValue = typeFilter.value;
+            const sectorValue = sectorFilter.value;
+            const regionValue = regionFilter.value;
+            const cityValue = cityFilter.value;
+            const municipalValue = municipalFilter.value;
+            const statusValue = document.querySelector('.status-option.active').dataset.value;
+            
+            filteredOrganizations = organizations.filter(org => {
+                // Name filter
+                if (nameQuery && !org.name.toLowerCase().includes(nameQuery)) {
+                    return false;
+                }
+                
+                // Type filter
+                if (typeValue && org.type !== typeValue) {
+                    return false;
+                }
+                
+                // Sector filter
+                if (sectorValue && org.sector !== sectorValue) {
+                    return false;
+                }
+                
+                // Status filter
+                if (statusValue && String(org.status) !== statusValue) {
+                    return false;
+                }
+                
+                // Region filter
+                if (regionValue && org.region !== regionValue) {
+                    return false;
+                }
+                
+                // City filter
+                if (cityValue && org.city !== cityValue) {
+                    return false;
+                }
+
+                // Municipal filter
+                if (municipalValue && org.municipal !== municipalValue) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            currentPage = 1;
+            renderOrganizations();
+            updateResultsCount();
+        }
+
+        // Reset all filters
+        function resetFilters() {
+            nameSearch.value = '';
+            typeFilter.value = '';
+            sectorFilter.value = '';
+            regionFilter.value = '';
+            cityFilter.value = '';
+            municipalFilter.value = '';
+            globalSearch.value = '';
+            
+            statusOptions.forEach(opt => opt.classList.remove('active'));
+            statusOptions[0].classList.add('active');
+            
+            filteredOrganizations = [...organizations];
+            currentPage = 1;
+            renderOrganizations();
+            updateResultsCount();
+        }
+
+        // Render organizations for the current page
+        function renderOrganizations() {
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedOrgs = filteredOrganizations.slice(startIndex, endIndex);
+            
+            organizationList.innerHTML = '';
+            
+            if (paginatedOrgs.length === 0) {
+                organizationList.innerHTML = `
+                    <div class="no-results" style="padding: 2rem; text-align: center;">
+                        <h3>No organizations found</h3>
+                        <p>Try adjusting your filters or search terms</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            paginatedOrgs.forEach(org => {
+                const card = document.createElement('li');
+                card.className = 'organization-card';
+                
+                const statusClass = org.status ? 'status-active' : 'status-inactive';
+                const statusText = org.status ? 'Active' : 'Inactive';
+                
+                card.innerHTML = `
+                    <div class="organization-header">
+                        <div class="organization-name">${org.name}</div>
+                        <div class="organization-status ${statusClass}">${statusText}</div>
+                    </div>
+                    <div class="organization-details">
+                        <div class="detail-item">
+                            <i class="fas fa-tag"></i>
+                            <div><strong>Type:</strong> ${org.type}</div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-industry"></i>
+                            <div><strong>Sector:</strong> ${org.sector}</div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-globe-americas"></i>
+                            <div><strong>Region:</strong> ${org.region}</div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-city"></i>
+                            <div><strong>City:</strong> ${org.city}</div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-flag"></i>
+                            <div><strong>Municipal:</strong> ${org.municipal}</div>
+                        </div>
+                    </div>
+                    <div class="organization-address">
+                        <div class="address-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <div><strong>Address:</strong></div>
+                            <div>${org.address}</div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=${org.address}" class="map-link" target="_blank">View on map</a>
+                        </div>
+                    </div>
+                    <div class="organization-description">
+                        ${org.description}
+                    </div>
+                `;
+                
+                organizationList.appendChild(card);
+            });
+            
+            renderPagination();
+        }
+
+        // Render pagination controls
+        function renderPagination() {
+            const pageCount = Math.ceil(filteredOrganizations.length / itemsPerPage);
+            
+            if (pageCount <= 1) {
+                paginationContainer.innerHTML = '';
+                return;
+            }
+            
+            let paginationHTML = '';
+            
+            // Previous button
+            paginationHTML += `
+                <button id="prev-page" ${currentPage === 1 ? 'disabled' : ''}>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            `;
+            
+            // Page numbers
+            for (let i = 1; i <= pageCount; i++) {
+                paginationHTML += `
+                    <button class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">
+                        ${i}
+                    </button>
+                `;
+            }
+            
+            // Next button
+            paginationHTML += `
+                <button id="next-page" ${currentPage === pageCount ? 'disabled' : ''}>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            `;
+            
+            paginationContainer.innerHTML = paginationHTML;
+            
+            // Add event listeners to pagination buttons
+            document.getElementById('prev-page')?.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderOrganizations();
+                    updateResultsCount();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+            
+            document.getElementById('next-page')?.addEventListener('click', () => {
+                if (currentPage < pageCount) {
+                    currentPage++;
+                    renderOrganizations();
+                    updateResultsCount();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+            
+            document.querySelectorAll('.page-number').forEach(button => {
+                button.addEventListener('click', () => {
+                    currentPage = parseInt(button.dataset.page);
+                    renderOrganizations();
+                    updateResultsCount();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        }
+
+        // Update results count display
+        function updateResultsCount() {
+            const total = filteredOrganizations.length;
+            const start = Math.min((currentPage - 1) * itemsPerPage + 1, total);
+            const end = Math.min(currentPage * itemsPerPage, total);
+            
+            resultsCount.textContent = total;
+            startCount.textContent = start;
+            endCount.textContent = end;
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
